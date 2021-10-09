@@ -9,22 +9,30 @@ const ProductListing = () => {
     // console.log(products);
     const dispatch = useDispatch()
 
-    const fetchrpoducts = async () => {
-        const responce = await axios.get("https://fakestoreapi.com/products")
-            .catch((err) => {
-                console.log("error" ,err)
-            });
-        dispatch(setproduct(responce.data));
-    }
+    // const fetchrpoducts = async () => {
+    //     const responce = await axios.get("https://fakestoreapi.com/products")
+    //         .catch((err) => {
+    //             console.log("error" ,err)
+    //         });
+    //     dispatch(setproduct(responce.data));
+    // }
     useEffect(() => {
+        const fetchrpoducts = async () => {
+            const responce = await axios.get("https://fakestoreapi.com/products")
+                .catch((err) => {
+                    console.log("error" ,err)
+                });
+            dispatch(setproduct(responce.data));
+        }
+
         fetchrpoducts()
-    }, [])
-    console.log("Products:", products)
+    },[dispatch]);
+    console.log("Products:", products);
 
     
     return (
         <div className="ui grid container " >
-            <ProductComponent />
+            <ProductComponent/>
         </div>
     )
 }
