@@ -1,17 +1,13 @@
-import { ActtionTypes } from "../constants/actionypes";
+import { ActionTypes } from "../constants/actionypes";
 
 const initialsState = {
-    products:[{
-        id:1,
-        title:"Rameshwar",
-        category:"web-devoloper And Programmer"
-    }],
+    products:[],
 };
 
-export const productReducer =(state =initialsState,{type,payload})=>{
+export const productReducer =(state = initialsState,{type,payload})=>{
     switch (type) {
-        case ActtionTypes.SET_PRODUCT:
-            return state
+        case ActionTypes.SET_PRODUCT:
+            return {...state,products:payload}
         default:
             return state;
     }

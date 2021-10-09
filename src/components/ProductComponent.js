@@ -1,25 +1,41 @@
 import React from 'react'
-import {useSelector}  from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const ProductComponent = () => {
     const product = useSelector(state => state.allProduct.products)
-    const {id,title,category} = product[0]
-    console.log(id)
-    return (
-        <div className = "four colum wide">
-            <div className="ui link card">
-                <div className="card">
-                    <div className="image">{title}</div>
-                    <div className="content">
-                        <div className="header">{category}</div>
+    const List = product.map((Item) => {
+        const { id, title, image, price, category } = Item
+        return (
+            <div className="four wide column" key={id}>
+                <div className="ui link cards">
+                    <div className="card">
+                        <div className="image">
+                            <img src={image} alt={title} />
+                        </div>
+
+                        <div className="content">
+                            <div className="header">{title}</div>
+                            <div className="meta price">${price}</div>
+                            <div className="meta">{category}</div>
+
+
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
-            
-        </div>
+
+        )
+
+    })
+    return (
+        <>
+            {List}
+        </>
     )
+
 }
 
 export default ProductComponent
