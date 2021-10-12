@@ -7,9 +7,9 @@ export const setproduct = (product)=>{
         }
 };
 
-export const selectedproduct = (products)=>{
+export const selectedproduct = (product)=>{
     return{
         type: ActionTypes.SELECTED_PRODUCT,
-        payload:products
+        payload:product
     }
 };
